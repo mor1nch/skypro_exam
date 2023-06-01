@@ -7,7 +7,7 @@ services:
       - "80:80"
     platform: linux/amd64
     volumes:
-      - ./docker_config-ci.py:/code/default_config.py
+      - ./docker_config-ci.py:/code/docker_config.py
     depends_on:
       pg:
         condition: service_healthy
