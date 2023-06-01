@@ -32,7 +32,6 @@ The task was to implement a REST service that allows you to store friends birthd
 - the project is deployed on the server
 - automatic deployment happens
 - tests are written
-
 ___
 ### Skills practiced with: 
 
