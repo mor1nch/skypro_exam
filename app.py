@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restx import Api
 
-from config import Config
+from default_config import Config
 from setup_db import db, SQLAlchemy
 from views.birthday import birthday_ns
 
