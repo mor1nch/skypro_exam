@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir skypro_exam
           cat docker-compose-ci.yaml | envsubst > skypro_exam/docker-compose.yaml
-          cat docker_config_ci.py | envsubst > skypro_exam/docker_config.py
+          cat docker_config-ci.py | envsubst > skypro_exam/docker_config.py
       - name: copy files to server
         uses: appleboy/scp-action@v0.1.4
         with:
