@@ -27,15 +27,14 @@ jobs:
           mkdir skypro_exam
           cat docker-compose-ci.yaml | envsubst > skypro_exam/docker-compose.yaml
           cat docker_config-ci.py | envsubst > skypro_exam/docker_config.py
-      - name: copy files to server
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: "skypro_exam/docker-compose.yaml,skypro_exam/docker_config.py"
-          target: "flask_exam_app_ci"
-          strip_components: 1
+      - name: Copy docker-compose.yaml to remote server
+        run: |
+          echo ${{ secrets.PASSWORD }} | scp -r -P 22 skypro_exam/docker-compose.yaml ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/flask_exam_app_ci
+
+      - name: Copy docker_config.py to remote server
+        run: |
+          echo ${{ secrets.PASSWORD }} | scp -r -P 22 skypro_exam/docker_config.py ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/flask_exam_app_ci
+
       - name: skypro_exam application
         uses: appleboy/ssh-action@v0.1.10
         with:
